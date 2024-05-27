@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldPoint: {fileID: 4548928474122878695}
+  maxEnergy: 100
+  consumeSpeed: 1
 --- !u!1 &5398983244233176482
 GameObject:
   m_ObjectHideFlags: 0

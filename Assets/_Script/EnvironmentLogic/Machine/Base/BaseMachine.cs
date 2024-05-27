@@ -1,27 +1,34 @@
 using UnityEngine;
 
-public class BaseMachine : MonoBehaviour
+public class BaseMachine : MonoBehaviour,IMachine
 {
+    private IMachineParent currentParent;
+
+
+
+
+    #region ParentMethods
     public void SetMachineParent(IMachineParent newParent)
     {
         if (newParent != null)
         {
-            transform.parent = newParent.GetHeldPoint();
-
             //adjust the transform
+            transform.parent = newParent.GetHeldPoint();
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
-        }
-        else
-        {
-            //if the new parent is null, it's a bug,so destroy the machine
-            SelfDestroy();
+
+            //reset the reference in other scripts
+            currentParent?.SetHeldMachine(null);
+            newParent.SetHeldMachine(this);
+
+            //reset the reference
+            currentParent = newParent;
         }
     }
 
-    public void SelfDestroy()
+    public IMachineParent GetCurrentParent()
     {
-        
-        Destroy(gameObject);
+        return currentParent;
     }
+    #endregion
 }

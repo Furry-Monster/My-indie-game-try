@@ -9,7 +9,12 @@ public class BasePlate : MonoBehaviour, IInteractable, IMachineParent
     #region Interactable Methods
     public virtual void Interact()
     {
-        Debug.Log("Interact with " + name);
+        Debug.Log("Interact(E) with " + name);
+    }
+
+    public virtual void InteractAlt()
+    {
+        Debug.Log("Interact(F) Alterly with " + name);
     }
 
     #endregion

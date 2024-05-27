@@ -75,6 +75,7 @@ public class Player : MonoBehaviour,IMachineParent
     private void Start()
     {
         input.OnInteract += Interact;
+        input.OnInteractAlt += InteractAlt;
     }
 
     private void Update()
@@ -141,7 +142,10 @@ public class Player : MonoBehaviour,IMachineParent
         selectedPlate?.Interact();
     }
 
-
+    private void InteractAlt(object sender, EventArgs e)
+    {
+        selectedPlate?.InteractAlt();
+    }
 
 
     #endregion

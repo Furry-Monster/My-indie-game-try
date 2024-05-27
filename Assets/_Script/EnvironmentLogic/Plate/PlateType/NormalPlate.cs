@@ -1,10 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class NormalPlate : BasePlate
 {
-    
+    private void Update()
+    {
+        CheckPlate();
+    }
+
+    private void CheckPlate()
+    {
+        if (GetHeldPoint().childCount > 0)
+        {
+            SetHeldMachine(GetHeldPoint().GetChild(0).GetComponent<BaseMachine>());
+        }
+        else
+        {
+            SetHeldMachine(null);
+        }
+    }
+
     public override void Interact()
     {
         base.Interact();
@@ -39,5 +51,12 @@ public class NormalPlate : BasePlate
                 //then nothing would happend
             }
         }
+    }
+
+    public override void InteractAlt()
+    {
+        base.InteractAlt();
+
+        //nothing would happend
     }
 }

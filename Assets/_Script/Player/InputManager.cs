@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 
     //Input Events
     public event EventHandler OnInteract;
+    public event EventHandler OnInteractAlt;
 
     //Input Properties
     public Vector2 moveInput
@@ -38,6 +39,7 @@ public class InputManager : MonoBehaviour
     {
         //Subscribe to Input Events
         inputActions.Player.Interact.performed += ctx => OnInteract?.Invoke(this, EventArgs.Empty);
+        inputActions.Player.InteractAlt.performed += ctx => OnInteractAlt?.Invoke(this, EventArgs.Empty);
     }
 
     private void Update()
